@@ -245,29 +245,70 @@ section p {
 }
 
 footer {
-    background:rgb(64,80,84);
+    background:rgb(64,80,84) url('../medias/prudwizzle-pattern.png') repeat center center;
+	background-size:100px auto;
     padding:50px 0;
     z-index:0;
     position:relative;
 }
 
-footer .prudwizzle {
-    background:url('../medias/icons/prudwizzle-light.png') no-repeat center center;
-    background-size:100% auto;
-    width:80px;
-    height:64px;
-    margin:0 auto 30px auto;
+footer h3 {
+	margin:0 0 30px 0;
+    padding:0;
+    font-family:'Walkway-Bold';
+    font-size:25px;
+    font-weight:normal;
+    color:#fff;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:10px;
 }
+
+#social {
+	margin:0 0 30px 0;
+	font-size:0;
+	color:transparent;
+	text-align:center;
+}
+
+#social a {
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:20px 20px;
+	width:32px;
+	height:32px;
+	border:2px solid #fff;
+	border-radius:32px;
+	margin:0 20px;
+	display:inline-block;
+	text-decoration:none;
+}
+
+#social a:first-of-type {margin-left:0;}
+#social a:last-of-type {margin-right:0;}
+
+#social .facebook {background-image:url('../medias/icons/social/facebook.png');}
+#social .twitter {background-image:url('../medias/icons/social/twitter.png');}
+#social .google {background-image:url('../medias/icons/social/google.png');}
 
 footer p {
     margin:0;
     padding:0;
     font-family:'HelveticaNeue-Thin', Helvetica, Arial, sans-serif;
-    font-size:14px;
+    font-size:12px;
     color:#fff;
-    line-height:26px;
+    line-height:15px;
     letter-spacing:0.5px;
     text-align:center;
+}
+
+footer .prudwizzle {
+    background:url('../medias/icons/prudwizzle-light.png') no-repeat center center;
+    background-size:100% auto;
+    width:40px;
+    height:32px;
+    margin:30px auto 0 auto;
+	display:none;
 }
 
 @media screen and (max-width:1060px) {
