@@ -1,0 +1,52 @@
+header {
+	background:rgb(64,80,84);
+	opacity:1;
+}
+
+#introduction .prudwizzle {
+	opacity:1;
+	-webkit-transform:scale(1) rotate(0d);
+	-moz-transform:scale(1) rotate(0);
+	transform:scale(1) rotate(0);
+}
+
+#wood .leaf {
+    background:url('../medias/icons/leaf.png') no-repeat center center;
+    background-size:70px 70px;
+    width:150px;
+    height:150px;
+    margin:80px auto 0 auto;
+    border:2px solid #fff;
+    border-radius:200px;
+	opacity:1;
+}
+
+#wood .leaf:before {
+    content:'';
+    background:-webkit-linear-gradient(transparent,#fff);
+    background:linear-gradient(transparent,#fff);
+    width:2px;
+    height:80px;
+    margin:-80px auto 0 auto;
+    display:block;
+}
+
+#art .draw .line {width:100%;}
+
+#art .draw .brush {
+	top:37px;
+	left:100%;
+}
+
+#social #share .buttons:before {content:'Veuillez activer Javascript';}
+
+@media screen and(max-width:1060px) {
+	#burger {display:none;}
+
+	header nav {
+		background:rgb(64,80,84);
+		margin:0 0 0 -30px;
+	}
+
+	header nav a {opacity:1;}
+}

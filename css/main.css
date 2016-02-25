@@ -1,0 +1,358 @@
+/******************************************************************************/
+/* RESET                                                                      */
+/*                                                                            */
+/* http://meyerweb.com/eric/tools/css/reset/                                  */
+/* v2.0 | 20110126                                                            */
+/* License: none (public domain)                                              */
+/******************************************************************************/
+
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+/******************************************************************************/
+/* FONTS                                                                      */
+/******************************************************************************/
+
+@font-face {
+    font-family:'Walkway';
+    font-style:normal;
+    font-weight:normal;
+    src:url('../medias/fonts/Walkway.ttf');
+}
+
+@font-face {
+    font-family:'Walkway-Bold';
+    font-style:normal;
+    font-weight:normal;
+    src:url('../medias/fonts/Walkway-Bold.ttf');
+}
+
+@font-face {
+    font-family:'HelveticaNeue-Thin';
+    font-style:normal;
+    font-weight:normal;
+    src:url('../medias/fonts/HelveticaNeue-Thin.ttf');
+}
+
+/******************************************************************************/
+/* MAIN STYLES                                                                */
+/******************************************************************************/
+
+body {
+    background:rgb(245,245,245);
+    margin:0;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+strong {font-weight:normal;}
+
+[itemscope] {display:none;}
+
+.wrapper {
+    width:1000px;
+    margin:0 auto;
+    box-sizing:border-box;
+}
+
+/******************************************************************************/
+/* HEADER STYLE                                                               */
+/******************************************************************************/
+
+/* Header element */
+header {
+    width:100%;
+    top:0;
+    left:0;
+    position:fixed;
+}
+
+header h1 {
+    padding:0;
+    font-family:'Walkway', Helvetica, Arial, sans-serif;
+    font-size:40px;
+    color:#fff;
+    text-transform:uppercase;
+}
+
+header h2 {
+    background:#fff;
+    margin:0 auto;
+    padding:10px 15px 10px 18px;
+    display:inline-block;
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:15px;
+    color:rgb(64,80,84);
+    text-align:center;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:5px;
+}
+
+header h1, header h2 {font-weight:normal;}
+
+/******************************************************************************/
+/* CONTENT STYLE                                                              */
+/******************************************************************************/
+
+/* Main content element */
+#main {
+    background:rgb(245,245,245);
+    width:100%;
+    z-index:0;
+    position:relative;
+}
+
+/* Section element */
+section {
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size:auto 150%;
+	background-attachment:fixed;
+    padding:70px 0;
+}
+
+/* Section's title element */
+section h2 {
+    font-family:'Walkway-Bold', Helvetica, Arial, sans-serif;
+    font-size:25px;
+    color:#232C2E;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:10px;
+}
+
+/* Section's paragraph element */
+section p {
+    margin:50px 0 0 0;
+    font-family:'HelveticaNeue-Thin', Helvetica, Arial, sans-serif;
+    font-size:18px;
+    color:#777f7f;
+    line-height:32px;
+    letter-spacing:0.5px;
+    text-align:center;
+}
+
+/* Dark sections */
+section.dark h2, section.dark p {color:#fff;}
+
+/******************************************************************************/
+/* FOOTER STYLE                                                               */
+/******************************************************************************/
+
+/* Footer element */
+footer {
+    background:rgb(64,80,84);
+    padding:50px 0;
+    z-index:0;
+    position:relative;
+}
+
+/* Footer's title element */
+footer h3 {
+	margin:0 0 25px 0;
+    padding:0;
+    font-family:'Walkway-Bold', Helvetica, Arial, sans-serif;
+    font-size:20px;
+    font-weight:normal;
+    color:#fff;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:7px;
+}
+
+/* Footer's social elements */
+#social {
+	margin:0 0 30px 0;
+	font-size:0;
+}
+
+#social > div {
+	vertical-align:top;
+	width:50%;
+	box-sizing:border-box;
+	display:inline-block;
+	text-align:center;
+}
+
+#social > div:first-of-type {border-right:2px dotted rgba(255,255,255,0.4);}
+
+/* Footer's social networks elements */
+#social #networks {
+	font-size:0;
+	color:transparent;
+}
+
+#social #networks a, #social #networks a:after {
+	background-color:#fff;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:20px 20px;
+	width:40px;
+	height:40px;
+	border:2px solid #fff;
+	border-radius:40px;
+	margin:0 17px;
+	display:inline-block;
+	text-decoration:none;
+	-webkit-transition:0.2s;
+	-moz-transition:0.2s;
+	transition:0.2s;
+}
+
+#social #networks a:after {
+	content:'';
+	background-color:rgb(64,80,84);
+	margin:0;
+	border:none;
+	display:block;
+	-webkit-clip-path:circle(100% at 50% 50%);
+	-moz-clip-path:circle(100% at 50% 50%);
+	clip-path:circle(100% at 50% 50%);
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	transition:0.5s;
+}
+
+#social #networks a:first-of-type {margin-left:0;}
+#social #networks a:last-of-type {margin-right:0;}
+
+#social #networks .facebook {background-image:url('../medias/icons/social/facebook-dark.png');}
+#social #networks .facebook:after {background-image:url('../medias/icons/social/facebook.png');}
+#social #networks .twitter {background-image:url('../medias/icons/social/twitter-dark.png');}
+#social #networks .twitter:after {background-image:url('../medias/icons/social/twitter.png');}
+#social #networks .google {background-image:url('../medias/icons/social/google-dark.png');}
+#social #networks .google:after {background-image:url('../medias/icons/social/google.png');}
+
+#social #networks a:hover:after {
+	-webkit-clip-path:circle(0 at 50% 50%);
+	-moz-clip-path:circle(0 at 50% 50%);
+	clip-path:circle(0 at 50% 50%);
+	-webkit-transition:0.35s;
+	-moz-transition:0.35s;
+	transition:0.35s;
+}
+
+#social #networks a:active {
+	-webkit-transform:scale(0.9);
+	-moz-transform:scale(0.9);
+	transform:scale(0.9);
+	-webkit-transition:0.1s;
+	-moz-transition:0.1s;
+	transition:0.1s;
+}
+
+/* Footer's share elements */
+#social #share .buttons {
+	width:202px;
+	height:36px;
+	padding:6px;
+	border:2px solid #fff;
+	box-sizing:border-box;
+	margin:0 auto;
+	border-radius:4px;
+	overflow:hidden;
+	display:inline-block;
+	-webkit-transition:0.3s 1s;
+	transition:0.3s 1s;
+}
+
+#social #share .buttons:before {
+	content:'Chargement...';
+	height:22px;
+	margin:0 0 -22px 0;
+	display:block;
+	font-family:'HelveticaNeue-Thin', Helvetica, Arial, sans-serif;
+    font-size:13px;
+    color:#fff;
+	line-height:22px;
+    letter-spacing:1px;
+    text-align:center;
+	-webkit-transition:0.3s 1s;
+	-moz-transition:0.3s 1s;
+	transition:0.3s 1s;
+}
+
+#social #share .buttons:after {color:transparent;}
+
+#social #share.visible .buttons {
+	background:#fff;
+}
+
+#social #share .buttons > div {
+	height:20px;
+	margin:0 3px;
+	opacity:0;
+	vertical-align:top;
+	display:inline-block;
+	-webkit-transition:0.3s 1s;
+	-moz-transition:0.3s 1s;
+	transition:0.3s 1s;
+}
+
+#social #share.visible .buttons > div {opacity:1;}
+
+#social #share .buttons > * {margin:0;}
+
+#social #share .buttons > div:first-of-type {margin-left:0;}
+#social #share .buttons > div:last-of-type {margin-right:0;}
+
+#social #share .buttons .facebook {width:63px;}
+#social #share .buttons .twitter {width:61px;}
+#social #share .buttons .google {width:50px;}
+
+/* Footer's paragraph element */
+footer p {
+    margin:0;
+    padding:0;
+    font-family:'HelveticaNeue-Thin', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    color:#fff;
+    letter-spacing:0.5px;
+    text-align:center;
+}
+
+/******************************************************************************/
+/* RESPONSIVE STYLE                                                           */
+/******************************************************************************/
+
+@media screen and (max-width:1060px) {
+    .wrapper {
+        width:100%;
+        padding:0 30px;
+    }
+
+	section {
+		background-size:auto 100%;
+		background-size:cover;
+		background-attachment:scroll;
+	}
+
+    section h2 {
+        font-size:18px;
+        line-height:32px;
+        letter-spacing:8px;
+    }
+
+	#social > div {width:100%;}
+
+	#social > div:first-of-type {
+		margin-bottom:30px;
+		padding-bottom:30px;
+		border-right:none;
+		border-bottom:2px dotted rgba(255,255,255,0.4);
+	}
+
+	#social #networks a.touched:after {
+		-webkit-clip-path:circle(0 at 50% 50%);
+		-moz-clip-path:circle(0 at 50% 50%);
+		clip-path:circle(0 at 50% 50%);
+		-webkit-transition:0.35s;
+		-moz-transition:0.35s;
+		transition:0.35s;
+	}
+
+	#social #networks a:active {
+		-webkit-transform:none;
+		-moz-transform:none;
+		transform:none;
+	}
+}
