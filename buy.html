@@ -16,56 +16,70 @@
 	</head>
 	<body>
 
-		<!-- MICRODATA !-->
-		<div itemscope itemtype="http://schema.org/Product">
-			<span itemprop="brand">Prudwizzle</span>
-			<span itemprop="name">Prudwizzle</span>
-			<img itemprop="image" src="medias/prudwizzle.jpeg" alt="Prudwizzle" style="display:none;"/>
-			<span itemprop="description">Jouet en bois pour enfant.</span>
-			<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-	    		<span itemprop="ratingValue">4.4</span>
-			<span itemprop="reviewCount">89</span>
-			</span>
-			<span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-	    		<meta itemprop="priceCurrency" content="EUR"/>
-	        	<span itemprop="price">10</span>
-			<link itemprop="itemCondition" href="http://schema.org/UsedCondition"/>
-			<link itemprop="availability" href="http://schema.org/InStock"/>
-			</span>
-		</div>
-
-		<div itemscope itemtype="http://schema.org/LocalBusiness">
-			<a itemprop="url" href="https://d157rqmxrxj6ey.cloudfront.net/bonneaudargelos/30973/">
-				<div itemprop="name">Prudwizzle</div>
-			</a>
-			<div itemprop="description">Le Prudwizzle est un jouet en bois pour enfant d'origine jurassienne.</div>
-			<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-				<span itemprop="streetAddress">Place André Meunier</span><br>
-				<span itemprop="addressLocality">Bordeaux</span><br>
-				<span itemprop="addressRegion">Gironde</span><br>
-				<span itemprop="postalCode">33800</span><br>
-				<span itemprop="addressCountry">France</span><br>
-			</div>
-		</div>
-		<!-- MICRODATA !-->
-
 		<!-- FACEBOOK SDK !-->
 		<div id="fb-root"></div>
 		<!-- FACEBOOK SDK !-->
 
 		<header>
 			<div class="wrapper">
-				<h1>Prudwizzle</h1>
-				<h2>Acheter</h2>
+				<a id="burger"></a>
+				<a href="./"><h1>Prudwizzle</h1></a>
+				<nav>
+					<a href="./#art" id="item-art">Un <strong>jouet</strong> d'art</a>
+					<a href="./#wood" id="item-wood">En <strong>bois</strong></a>
+					<a href="./#child" id="item-child">Pour <strong>enfant</strong></a>
+					<a href="#" id="item-buy">Acheter</strong></a>
+				</nav>
 			</div>
 		</header>
 		<div id="main">
 			<section id="plans">
 				<div class="wrapper">
 					<h2>Choisissez votre produit</h2>
-					<p>
-						Bientôt disponible à la vente.
-					</p>
+					<div class="product">
+						<span class="price">10€</span>
+						<h3>Prudwizzle coffret standard</h3>
+						<div class="infos">
+							<img src="medias/standard-pack.png" alt="Prudwizzle coffret standard"/>
+							<ul>
+								<li>
+									<span>Contenu du coffret</span>
+									<ul>
+										<li>Un prudwizzle</li>
+										<li>Un manche en bois</li>
+										<li>Une notice d'utilisation</li>
+									</ul>
+								</li>
+								<li>
+									<span>Prix</span> 10€
+								</li>
+							</ul>
+						</div>
+						<span class="add">Ajouter au panier</span>
+					</div>
+					<div class="product">
+						<span class="price">17€</span>
+						<h3>Prudwizzle coffret premium</h3>
+						<div class="infos">
+							<img src="medias/premium-pack.png" alt="Prudwizzle coffret premium"/>
+							<ul>
+								<li>
+									<span>Contenu du coffret</span>
+									<ul>
+										<li>Un prudwizzle</li>
+										<li>Un manche en bois</li>
+										<li>Une notice d'utilisation</li>
+										<li>Une hélice de rechange</li>
+										<li>Un kit d'entretien</li>
+									</ul>
+								</li>
+								<li>
+									<span>Prix</span> 17€
+								</li>
+							</ul>
+						</div>
+						<span class="add">Ajouter au panier</span>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -94,10 +108,45 @@
 					</div>
 				</div>
 				<p>
-					<strong>Prudwizzle</strong>, le <strong>jouet</strong> en <strong>bois</strong> pour <strong>enfant</strong>.
+					<strong>Prudwizzle</strong>, le <strong>jouet</strong> en <strong>bois</strong> pour <strong>enfant</strong>.<br>
+					Contenu et code original, aucun framework :)
 				</p>
 			</div>
 		</footer>
+
+		<!-- MICRODATA !-->
+		<div itemscope itemtype="http://schema.org/Product">
+			<strong itemprop="brand">Prudwizzle</strong>
+			<strong itemprop="name">Prudwizzle</strong>
+			<img itemprop="image" src="medias/prudwizzle.jpeg" alt="Prudwizzle" style="display:none;"/>
+			<span itemprop="description"><strong>Jouet</strong> en <strong>bois</strong> pour <strong>enfant</strong>.</span>
+			<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+	    		<span itemprop="ratingValue">4.4</span>
+			<span itemprop="reviewCount">89</span>
+			</span>
+			<span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+	    		<meta itemprop="priceCurrency" content="EUR"/>
+	        	<span itemprop="price">10</span>
+			<link itemprop="itemCondition" href="http://schema.org/UsedCondition"/>
+			<link itemprop="availability" href="http://schema.org/InStock"/>
+			</span>
+		</div>
+
+		<div itemscope itemtype="http://schema.org/LocalBusiness">
+			<a itemprop="url" href="https://d157rqmxrxj6ey.cloudfront.net/bonneaudargelos/30973/">
+				<strong itemprop="name">Prudwizzle</strong>
+			</a>
+			<div itemprop="description"><strong>Jouet</strong> en <strong>bois</strong> pour <strong>enfant</strong>.</div>
+			<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+				<span itemprop="streetAddress">Place André Meunier</span><br>
+				<span itemprop="addressLocality">Bordeaux</span><br>
+				<span itemprop="addressRegion">Gironde</span><br>
+				<span itemprop="postalCode">33800</span><br>
+				<span itemprop="addressCountry">France</span><br>
+			</div>
+		</div>
+		<!-- MICRODATA !-->
+
 		<script type="text/javascript" src="js/buy.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>

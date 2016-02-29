@@ -210,7 +210,7 @@ var scroll={
 	},
 	// Detect and fire elements in the visible window frame
     fire:{
-        margin:20,
+        get margin(){return window.innerHeight*0.025},
         listeners:[],
 		// Return true if the specified element is above the visible window frame
         up:function(element,margin) {
@@ -238,7 +238,6 @@ var scroll={
                 var listeners=[];
                 for(var i=0; i<this.listeners.length; i++) {
                     var listener=this.listeners[i];
-                    console.log(listener);
                     if(listener.state==-listener.direction || (listener.state==0 && (listener.from==0 || listener.from==listener.direction))) listener.element.setAttribute('data-scrollfire','true');
                     else {
                         listener.from=listener.state;
@@ -301,6 +300,13 @@ var client={
 			for(var i=0; i<touched.length; i++) touched[i].className=touched[i].className.replace(/\btouched\b/g,'');
 		}
 	}
+};
+
+// Header object (timelapse animation)
+var header={
+	element:document.getElementsByTagName('header')[0],
+	// Initialize object (nothing to do)
+    init:function() {}
 };
 
 // Timelapse object (timelapse animation)
@@ -446,8 +452,8 @@ var timelapse={
     },
 	// Manage the header opacity and main title (h1) translation
     header:{
-		element:document.getElementsByTagName('header')[0],
-        title:document.getElementsByTagName('header')[0].getElementsByTagName('h1')[0],
+		get element(){return header.element;},
+        get title(){return this.element.getElementsByTagName('h1')[0];},
         get height(){return this.element.offsetHeight;},
         background:{r:64,g:80,b:84},
         from:-20,
@@ -545,6 +551,34 @@ var nav={
 		});
         scroll.target(this.element);
     }
+};
+
+// Nav object (smooth scroll on items and burger)
+var nav={
+	element:document.getElementsByTagName('nav')[0],
+	burger:document.getElementById('burger'),
+	open:function(){header.element.className='nav';},
+	close:function(){header.element.className='';},
+	// Toogle nav
+	toogle:function() {
+		header.element.className=header.element.className=='nav' ? '' : 'nav';
+	},
+	// Initialize object: add a click listener on the burger button and items, apply smooth scroll on items
+	init:function() {
+		crossClick(burger,nav.toogle);
+		for(var i=0; i<this.element.getElementsByTagName('a').length; i++) {
+			var href=this.element.getElementsByTagName('a')[i].getAttribute('href');
+			if(typeof href=='string') {
+				if(href[0]=='#') {
+					crossClick(this.element.getElementsByTagName('a')[i],function() {
+						nav.close();
+						return false;
+					});
+				}
+			}
+		}
+		scroll.target(this.element);
+	}
 };
 
 // Social object (social networks links and share buttons)

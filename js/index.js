@@ -1,6 +1,7 @@
 var init=[
 	'scroll',
 	'client',
+	'header',
 	'timelapse',
 	'parallax',
 	'nav',
