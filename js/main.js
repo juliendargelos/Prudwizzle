@@ -198,7 +198,7 @@ var Product=function(element) {
 	element.product=this;
 
 	if(this.elements.add) crossClick(this.elements.add,function(event) {
-		basket.open();
+		if(basket.empty) basket.open();
 		product.add();
 	});
 }
@@ -677,8 +677,10 @@ var products={
 // Basket object
 var basket={
 	element:document.getElementById('basket'),
+	get total(){return this.element.getElementsByClassName('total')[0];},
 	get button(){return this.element.getElementsByClassName('button')[0];},
 	get list(){return this.element.getElementsByTagName('ul')[0];},
+	get empty(){return basket.list.getElementsByTagName('li').length==0;},
 	open:function() {
 		this.element.className+=' opened';
 	},
@@ -688,6 +690,13 @@ var basket={
 	toogle:function() {
 		if(this.element.className.match(/\bopened\b/)!==null) this.close();
 		else this.open();
+	},
+	totalUpdate:function() {
+		var total=0;
+		var products=this.list.getElementsByTagName('li');
+		for(var i=0; i<products.length; i++) total+=parseInt(products[i].product.data.price);
+		this.total.innerHTML='';
+		this.total.appendChild(document.createTextNode(total+'€'));
 	},
 	add:function(product) {
 		if(!(product instanceof Product)) return false;
@@ -699,6 +708,7 @@ var basket={
 			element.className='out';
 			setTimeout(function() {
 				element.parentNode.removeChild(element);
+				basket.totalUpdate();
 			},300);
 			if(basket.list.getElementsByTagName('li').length<=1) basket.element.className+=' empty';
 			else basket.element.className=basket.element.className.replace(/\bempty\b/g,'');
@@ -710,7 +720,17 @@ var basket={
 		element.appendChild(product.elements.name.cloneNode(true));
 		element.appendChild(product.elements.price.cloneNode(true));
 
+		element.product=product;
+
+		if(parseInt(this.total.innerText)+parseInt(product.data.price)>=100) {
+			new LightBox('Somme maximum de commande: 99€');
+			return false;
+		}
+
 		this.list.appendChild(element);
+
+		this.totalUpdate();
+
 		basket.element.className=basket.element.className.replace(/\bempty\b/g,'');
 	},
 	order:function() {
