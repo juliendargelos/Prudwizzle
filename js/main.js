@@ -200,7 +200,6 @@ var Product=function(element) {
 	if(this.elements.add) crossClick(this.elements.add,function(event) {
 		basket.open();
 		product.add();
-		event.stopPropagation();
 	});
 }
 
@@ -300,6 +299,7 @@ var scroll={
 	},
 	// Detect anchor links to apply smooth scroll on them
 	target:function(element) {
+		console.log(element);
 	    if(element instanceof Node) {
 	        if(element.tagName=='A') {
 				var href=element.getAttribute('href');
@@ -637,27 +637,6 @@ var parallax={
 	}
 };
 
-// Nav object (smooth scroll on int the page and menu for smartphone)
-var nav={
-    element:document.getElementsByTagName('nav')[0],
-	burger:document.getElementById('burger'),
-	open:function(){timelapse.header.element.className='nav';},
-	close:function(){timelapse.header.element.className='';},
-	// Toogle nav
-	toogle:function() {
-		timelapse.header.element.className=timelapse.header.element.className=='nav' ? '' : 'nav';
-	},
-	// Initialize object: add a click listener on the burger button and items, apply smooth scroll on items
-    init:function() {
-		crossClick(burger,nav.toogle);
-		for(var i=0; i<this.element.getElementsByTagName('a').length; i++) crossClick(this.element.getElementsByTagName('a')[i],function() {
-			nav.close();
-			return false;
-		});
-        scroll.target(this.element);
-    }
-};
-
 // Nav object (smooth scroll on items and burger)
 var nav={
 	element:document.getElementsByTagName('nav')[0],
@@ -716,13 +695,14 @@ var basket={
 		var close=document.createElement('span');
 		close.className='close';
 
-		crossClick(close,function() {
+		crossClick(close,function(event) {
 			element.className='out';
 			setTimeout(function() {
 				element.parentNode.removeChild(element);
 			},300);
 			if(basket.list.getElementsByTagName('li').length<=1) basket.element.className+=' empty';
 			else basket.element.className=basket.element.className.replace(/\bempty\b/g,'');
+			event.stopPropagation();
 		});
 
 		element.appendChild(close);
@@ -737,9 +717,8 @@ var basket={
 		new LightBox('Ce site ne vend pas de produit ! Le Prudwizzle est un objet factice, son véritable nom est "Bozo Bozo".');
 	},
 	init:function() {
-		crossClick(this.button,function(event){basket.toogle();event.stopPropagation();});
-		crossClick(this.list,function(event){basket.open();event.stopPropagation();});
-		crossClick(window,function(){basket.close();});
+		crossClick(this.button,function(event){basket.toogle();});
+		crossClick(this.list,function(event){basket.open();});
 		crossClick(this.element.getElementsByClassName('order')[0],function(){basket.order();});
 	}
 };
