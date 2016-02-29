@@ -3,6 +3,8 @@ var init=[
 	'client',
 	'header',
 	'nav',
+	'products',
+	'basket',
 	'social',
 	'thimbleHack'
 ];

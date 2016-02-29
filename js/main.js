@@ -146,6 +146,109 @@ var Animation=function(draw,duration,fps,ease,wait) {
 	if(wait!==true) this.fire();
 };
 
+// Product constructor (data about a product)
+var Product=function(element) {
+	if(!(element instanceof Node)) element=document.createElement('div');
+	Object.defineProperties(this,{
+		element:{
+			get:function(){return element;}
+		},
+		elements:{
+			get:function() {
+				var elements={};
+				var children=element.querySelectorAll('*');
+				for(var i=0; i<children.length; i++) {
+					if(typeof children[i].tagName=='string') {
+						if(typeof children[i].className=='string' && children[i].className!='') elements[children[i].className.split(' ')[0]]=children[i];
+						else elements[children[i].tagName.toLowerCase()]=children[i];
+					}
+				}
+				return elements;
+			}
+		},
+		data:{
+			get:function() {
+				var data={};
+				var elements=this.elements;
+				for(var k in elements) {
+					(function(element,k) {
+						if(element.innerText!='') {
+							Object.defineProperty(data,k,{
+								get:function(){return element.innerText;},
+								set:function(value){element.appendChild(document.createTextNode(value));}
+							});
+						}
+						else if(element.attributes.length>0) {
+							var attribute=element.attributes[0].name;
+							Object.defineProperty(data,k,{
+								get:function(){return element.getAttribute(attribute);},
+								set:function(value){element.setAttribute(attribute,value);}
+							});
+						}
+					})(elements[k],k);
+				}
+				return data;
+			}
+		}
+	});
+
+	var product=this;
+
+	this.add=function(){basket.add(this);};
+	element.product=this;
+
+	if(this.elements.add) crossClick(this.elements.add,function(event) {
+		basket.open();
+		product.add();
+		event.stopPropagation();
+	});
+}
+
+// LightBox constructor (display a message into a lightbox)
+var LightBox=function(message,callback,wait) {
+	var element=document.createElement('div');
+	var content=document.createElement('div');
+	var p=document.createElement('p');
+	var span=document.createElement('span');
+
+	element.className='popup';
+
+	span.appendChild(document.createTextNode('Fermer'));
+	p.appendChild(document.createTextNode(message));
+	content.appendChild(p);
+	content.appendChild(span);
+	element.appendChild(content);
+
+	var lightBox=this;
+
+	this.append=function() {
+		document.body.appendChild(this.element);
+	};
+
+	this.close=function() {
+		this.element.className+=' out';
+		setTimeout(function(){lightBox.element.parentNode.removeChild(lightBox.element);},300);
+	};
+
+	crossClick(span,function(){if(lightBox.callback()!==false) lightBox.close();});
+
+	Object.defineProperties(this,{
+		element:{
+			get:function(){return element;}
+		},
+		message:{
+			get:function(){return p.innerText;},
+			set:function(value){p.appendChild(document.createTextNode(value));}
+		},
+		callback:{
+			get:function(){return typeof callback=='function' ? callback : function(){};},
+			set:function(value){callback=value;}
+		}
+	});
+
+	if(this.wait!==true) this.append();
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 // FUNCTIONS                                                                  //
 ////////////////////////////////////////////////////////////////////////////////
@@ -163,14 +266,16 @@ function offsetOf(element) {
 
 // crossClick function (make cross "clickable/touchable" elements)
 function crossClick(element,callback) {
+	if(typeof element.onclick!='function') element.onclick=function(){return false;}
+	if(typeof element.ontouchend!='function') element.ontouchend=function(){return false;}
 	element.addEventListener('click',function(event) {
 		if(!client.touch) {
-			if(callback(event)===false) event.preventDefault();
+			if(callback(event,element)===false) event.preventDefault();
 		}
 	});
 	element.addEventListener('touchend',function(event) {
 		if(client.touch) {
-			if(callback(event)===false) event.preventDefault();
+			if(callback(event,element)===false) event.preventDefault();
 		}
 	});
 };
@@ -578,6 +683,64 @@ var nav={
 			}
 		}
 		scroll.target(this.element);
+	}
+};
+
+// Products object (get products data)
+var products={
+	list:[],
+	init:function() {
+		var productsElements=document.getElementsByClassName('product');
+		for(var i=0; i<productsElements.length; i++) this.list.push(new Product(productsElements[i]));
+	}
+};
+
+// Basket object
+var basket={
+	element:document.getElementById('basket'),
+	get button(){return this.element.getElementsByClassName('button')[0];},
+	get list(){return this.element.getElementsByTagName('ul')[0];},
+	open:function() {
+		this.element.className+=' opened';
+	},
+	close:function() {
+		this.element.className=this.element.className.replace(/\bopened\b/g,'');
+	},
+	toogle:function() {
+		if(this.element.className.match(/\bopened\b/)!==null) this.close();
+		else this.open();
+	},
+	add:function(product) {
+		if(!(product instanceof Product)) return false;
+		var element=document.createElement('li');
+		var close=document.createElement('span');
+		close.className='close';
+
+		crossClick(close,function() {
+			element.className='out';
+			setTimeout(function() {
+				element.parentNode.removeChild(element);
+			},300);
+			if(basket.list.getElementsByTagName('li').length<=1) basket.element.className+=' empty';
+			else basket.element.className=basket.element.className.replace(/\bempty\b/g,'');
+		});
+
+		element.appendChild(close);
+		element.appendChild(product.elements.img.cloneNode(true));
+		element.appendChild(product.elements.name.cloneNode(true));
+		element.appendChild(product.elements.price.cloneNode(true));
+
+		this.list.appendChild(element);
+		basket.element.className=basket.element.className.replace(/\bempty\b/g,'');
+	},
+	order:function() {
+		new LightBox('Ce site ne vend pas de produit ! Le Prudwizzle est un objet factice, son véritable nom est "Bozo Bozo".');
+	},
+	init:function() {
+		crossClick(this.button,function(event){basket.toogle();event.stopPropagation();});
+		crossClick(this.list,function(event){basket.open();event.stopPropagation();});
+		crossClick(window,function(){basket.close();});
+		crossClick(this.element.getElementsByClassName('order')[0],function(){basket.order();});
 	}
 };
 

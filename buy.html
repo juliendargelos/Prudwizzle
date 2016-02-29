@@ -15,7 +15,6 @@
 		</noscript>
 	</head>
 	<body>
-
 		<!-- FACEBOOK SDK !-->
 		<div id="fb-root"></div>
 		<!-- FACEBOOK SDK !-->
@@ -28,22 +27,31 @@
 					<a href="./#art" id="item-art">Un <strong>jouet</strong> d'art</a>
 					<a href="./#wood" id="item-wood">En <strong>bois</strong></a>
 					<a href="./#child" id="item-child">Pour <strong>enfant</strong></a>
-					<a href="#" id="item-buy">Acheter</strong></a>
+					<a href="#" id="item-buy">Acheter</a>
 				</nav>
 			</div>
 		</header>
+		<div id="basket" class="empty">
+			<div class="wrapper">
+				<span class="button">
+					<span class="order">Commander</span>
+					Panier
+					<ul></ul>
+				</span>
+			</div>
+		</div>
 		<div id="main">
 			<section id="plans">
 				<div class="wrapper">
 					<h2>Choisissez votre produit</h2>
 					<div class="product">
 						<span class="price">10€</span>
-						<h3>Prudwizzle coffret standard</h3>
+						<h3 class="name">Prudwizzle coffret standard</h3>
 						<div class="infos">
 							<img src="medias/standard-pack.png" alt="Prudwizzle coffret standard"/>
 							<ul>
 								<li>
-									<span>Contenu du coffret</span>
+									<span class="prop">Contenu du coffret</span>
 									<ul>
 										<li>Un prudwizzle</li>
 										<li>Un manche en bois</li>
@@ -51,7 +59,7 @@
 									</ul>
 								</li>
 								<li>
-									<span>Prix</span> 10€
+									<span class="prop">Prix</span> <span class="price">10€</span>
 								</li>
 							</ul>
 						</div>
@@ -59,12 +67,12 @@
 					</div>
 					<div class="product">
 						<span class="price">17€</span>
-						<h3>Prudwizzle coffret premium</h3>
+						<h3 class="name">Prudwizzle coffret premium</h3>
 						<div class="infos">
 							<img src="medias/premium-pack.png" alt="Prudwizzle coffret premium"/>
 							<ul>
 								<li>
-									<span>Contenu du coffret</span>
+									<span class="prop">Contenu du coffret</span>
 									<ul>
 										<li>Un prudwizzle</li>
 										<li>Un manche en bois</li>
@@ -74,7 +82,7 @@
 									</ul>
 								</li>
 								<li>
-									<span>Prix</span> 17€
+									<span class="prop">Prix</span> <span class="price">17€</span>
 								</li>
 							</ul>
 						</div>
