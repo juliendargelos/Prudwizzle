@@ -1,0 +1,158 @@
+/******************************************************************************/
+/* MAIN STYLES                                                                */
+/******************************************************************************/
+
+body {margin:60px 0 0 0;}
+
+/******************************************************************************/
+/* HEADER STYLE                                                               */
+/******************************************************************************/
+
+/* Header element */
+header {
+    background:rgb(64,80,84);
+    opacity:1;
+}
+
+/******************************************************************************/
+/* CONTACT FORM STYLE                                                         */
+/******************************************************************************/
+
+#contact form {margin:60px 0 0 0;}
+
+#contact form fieldset {
+	width:100%;
+	display:block;
+}
+
+#contact form fieldset[data-inline] {font-size:0;}
+
+#contact form .field {
+	background:rgb(230,230,230);
+	width:100%;
+	margin:0 0 10px 0;
+	box-sizing:border-box;
+	font-size:0;
+	vertical-align:top;
+}
+
+#contact form fieldset[data-inline] .field {
+	width:50%;
+	display:inline-block;
+}
+
+#contact form fieldset[data-inline] .field:first-of-type {border-right:5px solid rgb(245,245,245);}
+#contact form fieldset[data-inline] .field:last-of-type {border-left:5px solid rgb(245,245,245);}
+
+#contact form .field:after {
+	content:'';
+	background:rgba(64,80,84,0.5);
+	width:0;
+	height:2px;
+	display:block;
+	-webkit-transition:0.3s;
+	-moz-transition:0.3s;
+	transition:0.3s;
+}
+
+#contact form .field[data-error]:after {background:rgba(255,50,50,0.7);}
+
+#contact form .field[data-focus]:after, #contact form .field[data-error]:after {width:100%;}
+
+#contact form .field[data-error]:before {
+	content:attr(data-error);
+	height:11px;
+	top:10px;
+	right:10px;
+	margin:0 0 -11px 0;
+	z-index:2;
+	position:relative;
+	display:block;
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:11px;
+	color:rgba(255,50,50,0.7);
+	text-align:right;
+}
+
+#contact form .field > * {
+	background:transparent;
+	width:100%;
+	height:44px;
+	margin:0;
+	padding:15px;
+	border:none;
+	box-sizing:border-box;
+	outline:none;
+	resize:none;
+	display:block;
+	line-height:100%;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	font-family:Helvetica, Arial, sans-serif;
+	color:rgb(100,100,100);
+}
+
+#contact form .field label {
+	background:rgb(230,230,230);
+	width:auto;
+	height:14px;
+	margin:0 0 -44px 0;
+	box-sizing:content-box;
+	position:relative;
+	display:block;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
+	transition:0.1s;
+	letter-spacing:1px;
+	line-height:16px;
+}
+
+#contact form .field[data-focus] label, #contact form .field[data-content] label {
+	padding:10px 0 0 10px;
+	margin:0 0 -24px 0;
+	font-size:9px;
+	line-height:14px;
+}
+
+#contact form .field input, #contact form .field select, #contact form .field textarea {
+	padding:25px 10px 5px 10px;
+	font-size:13px;
+}
+
+#contact form .field textarea {height:200px;}
+
+#contact form input[type="submit"] {
+	background:rgb(230,230,230);
+	width:120px;
+	margin:0 0 0 auto;
+	padding:15px;
+	border:none;
+	cursor:pointer;
+	display:block;
+	-webkit-appearance:none;
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:13px;
+	font-weight:bold;
+	color:rgb(100,100,100);
+	text-align:center;
+	text-transform:uppercase;
+	-webkit-transition:0.2s;
+	-moz-transition:0.2s;
+	transition:0.2s;
+}
+
+#contact form input[type="submit"]:active:not(:disabled) {
+	-webkit-transform:scale(0.9);
+	-moz-transform:scale(0.9);
+	transform:scale(0.9);
+	-webkit-transition:0.1s;
+	-moz-transition:0.1s;
+	transition:0.1s;
+}
+
+#contact form input[type="submit"]:disabled {
+	cursor:default;
+	opacity:0.5;
+}

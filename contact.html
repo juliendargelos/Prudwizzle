@@ -7,89 +7,51 @@
 		<meta name="description" content="Le Prudwizzle est un jouet en bois pour enfant.">
 		<meta name="keywords" content="Prudwizzle, jouet, enfant, bois">
 
-		<meta name="google-site-verification" content="sbZFQc189gdKIKJEdrRgJkJ3t6U5FOVeH8SvoODkUAA">
-
-		<title>Prudwizzle</title>
+		<title>Prudwizzle - Contact</title>
 		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/contact.css">
 		<noscript>
 			<link rel="stylesheet" href="css/noscript.css">
 		</noscript>
 	</head>
-	<body class="index">
-
+	<body>
 		<!-- FACEBOOK SDK !-->
 		<div id="fb-root"></div>
 		<!-- FACEBOOK SDK !-->
 
-		<div id="timelapse">
-			<div class="overlay">
-				<div id="main-title">
-					<span class="bold">Prud</span><span>wizzle</span>
-				</div>
-				<a class="discover" href="#main">Découvrir</a>
-			</div>
-		</div>
 		<header>
 			<div class="wrapper">
 				<a id="burger"></a>
-				<a href="#"><h1>Prudwizzle</h1></a>
+				<a href="./"><h1>Prudwizzle</h1></a>
 				<nav>
-					<a href="#art" id="item-art">Un <strong>jouet</strong> d'art</a>
-					<a href="#wood" id="item-wood">En <strong>bois</strong></a>
-					<a href="#child" id="item-child">Pour <strong>enfant</strong></a>
-					<a href="buy.html" id="item-buy">Acheter</a>
+					<a href="./#art" id="item-art">Un <strong>jouet</strong> d'art</a>
+					<a href="./#wood" id="item-wood">En <strong>bois</strong></a>
+					<a href="./#child" id="item-child">Pour <strong>enfant</strong></a>
+					<a href="./buy.html" id="item-buy">Acheter</a>
 				</nav>
 			</div>
 		</header>
 		<div id="main">
-			<section id="introduction">
+			<section id="contact">
 				<div class="wrapper">
-					<h2>Le <strong>Prudwizzle</strong>, un <strong>jouet</strong> pour <strong>enfant</strong></h2>
-					<p>
-						Le <strong>Prudwizzle</strong> est conçu et réalisé par une équipe d’artisans passionnés par le travail du <strong>bois</strong> en tandem avec des spécialistes du <strong>jouet</strong> pour <strong>enfant</strong> dans le but de fournir un amusement écologique et responsable.
-					</p>
-					<div class="prudwizzle" data-scrollfire="down"></div>
-				</div>
-			</section>
-			<section id="art" class="dark">
-				<div class="wrapper">
-					<h2>Un <strong>jouet</strong>, une oeuvre d'art</h2>
-					<p>
-						Au-delà du <strong>jouet</strong>, le <strong>Prudwizzle</strong> est une véritable oeuvre d'art conciensieusement réalisée par des artisans du <strong>bois</strong>.
-						<br>Seules la précision et la qualité du travail comptent pour les menuisier qui produisent cet objet.
-					</p>
-					<div class="draw" data-scrollfire="down">
-						<div class="brush"></div>
-						<div class="line">
-							<strong>Prudwizzle</strong>
+					<h2>Contact</h2>
+					<form>
+						<fieldset data-inline>
+							<div class="field">
+								<label for="contact-name">Nom</label>
+								<input type="text" id="contact-name"/>
+							</div>
+							<div class="field">
+								<label for="contact-email">Adresse mail</label>
+								<input type="email" id="contact-email"/>
+							</div>
+						</fieldset>
+						<div class="field">
+							<label for="contact-message">Message</label>
+							<textarea id="contact-message"></textarea>
 						</div>
-					</div>
-				</div>
-			</section>
-			<section id="wood" class="dark">
-				<div class="wrapper">
-					<h2>Un matériau issu de la Terre: le <strong>bois</strong></h2>
-					<p>
-						Le <strong>Prudwizzle</strong> est le résultat de l'alliance du génie humain et des ressources que la nature lui met à disposition.
-						<br>Composé à 98% de <strong>bois</strong>, le <strong>Prudwizzle</strong> est aussi élégant que sain.
-					</p>
-					<div class="leaf" data-scrollfire="down"></div>
-				</div>
-			</section>
-			<section id="child" class="dark">
-				<div class="wrapper">
-					<h2>Un objet destiné aux <strong>enfant</strong>s</h2>
-					<p>
-						Le <strong>Prudwizzle</strong> est un objet amusant et adapté aux <strong>enfant</strong>s. Mystérieux dans son fonctionnement, il demeure sans danger.
-						<br>La simplicité et l'authenticité du <strong>Pruwizzle</strong> font de lui un <strong>jouet</strong> de choix.
-					</p>
-					<div class="child" data-scrollfire="down"></div>
-				</div>
-			</section>
-			<section id="buy">
-				<div class="wrapper">
-					<a href="buy.html">Obtenez votre <strong>Prudwizzle</strong></a>
+						<input type="submit" value="Envoyer" id="contact-submit"/>
+					</form>
 				</div>
 			</section>
 		</div>
@@ -119,7 +81,7 @@
 				</div>
 				<p>
 					Contenu et code original, aucun framework :)<br>
-					<a href="contact.html">Nous contacter</a>
+					<a href="#">Nous contacter</a>
 				</p>
 			</div>
 		</footer>
@@ -131,12 +93,12 @@
 			<img itemprop="image" src="medias/prudwizzle.jpeg" alt="Prudwizzle" style="display:none;"/>
 			<span itemprop="description"><strong>Jouet</strong> en <strong>bois</strong> pour <strong>enfant</strong>.</span>
 			<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-				<span itemprop="ratingValue">4.4</span>
+	    		<span itemprop="ratingValue">4.4</span>
 			<span itemprop="reviewCount">89</span>
 			</span>
 			<span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-				<meta itemprop="priceCurrency" content="EUR"/>
-				<span itemprop="price">10</span>
+	    		<meta itemprop="priceCurrency" content="EUR"/>
+	        	<span itemprop="price">10</span>
 			<link itemprop="itemCondition" href="http://schema.org/UsedCondition"/>
 			<link itemprop="availability" href="http://schema.org/InStock"/>
 			</span>
@@ -157,7 +119,7 @@
 		</div>
 		<!-- MICRODATA !-->
 
-		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/contact.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

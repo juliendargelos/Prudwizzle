@@ -299,7 +299,6 @@ var scroll={
 	},
 	// Detect anchor links to apply smooth scroll on them
 	target:function(element) {
-		console.log(element);
 	    if(element instanceof Node) {
 	        if(element.tagName=='A') {
 				var href=element.getAttribute('href');
@@ -742,6 +741,63 @@ var basket={
 		crossClick(this.element.getElementsByClassName('order')[0],function(){basket.order();});
 	}
 };
+
+// Contact object
+var contact={
+	element:document.getElementsByTagName('form')[0],
+	button:document.getElementById('contact-submit'),
+	get fields(){return this.element.getElementsByClassName('field');},
+	get inputs() {
+		var inputs=[];
+		for(var i=0; i<this.element.getElementsByTagName('input').length; i++) inputs.push(this.element.getElementsByTagName('input')[i]);
+		for(var i=0; i<this.element.getElementsByTagName('select').length; i++) inputs.push(this.element.getElementsByTagName('select')[i]);
+		for(var i=0; i<this.element.getElementsByTagName('textarea').length; i++) inputs.push(this.element.getElementsByTagName('textarea')[i]);
+		return inputs;
+	},
+	check:{
+		email:function(value){return value.match(/^[a-z0-9\-\._]+@[a-z0-9\-\._]+\.[a-z]{2,6}$/i)===null ? 'Veuillez indiquer une adresse mail valide' : true;},
+		generic:function(value){return value=='' ? 'Veuillez remplir ce champ' : true;}
+	},
+	focus:function() {
+		this.parentNode.setAttribute('data-focus','true');
+	},
+	blur:function() {
+		this.parentNode.removeAttribute('data-focus','true');
+		if(this.value!='') this.parentNode.setAttribute('data-content','true');
+		else this.parentNode.removeAttribute('data-content');
+		var valid=typeof contact.check[this.type]=='function' ? contact.check[this.type](this.value) : contact.check.generic(this.value);
+		if(valid!==true) this.parentNode.setAttribute('data-error',valid);
+	},
+	keydown:function() {
+		var input=this;
+		setTimeout(function() {
+			var valid=typeof contact.check[input.type]=='function' ? contact.check[input.type](input.value) : contact.check.generic(input.value);
+			if(valid===true) input.parentNode.removeAttribute('data-error');
+			var inputs=contact.inputs;
+			var valid=true;
+			for(var i=0; i<inputs.length && valid===true; i++) {
+				valid=typeof contact.check[inputs[i].type]=='function' ? contact.check[inputs[i].type](inputs[i].value) : contact.check.generic(inputs[i].value);
+			}
+			contact.button.disabled=valid!==true;
+		},1);
+	},
+	submit:function() {
+		new LightBox('Le formulaire de contact n\'est pas fonctionnel');
+		return false;
+	},
+	init:function() {
+		this.element.onsubmit=this.submit;
+		this.button.disabled=true;
+
+		var inputs=this.inputs;
+		for(var i=0; i<inputs.length; i++) {
+			this.inputs[i].onfocus=this.focus;
+			this.inputs[i].onblur=this.blur;
+			this.inputs[i].onkeydown=this.keydown;
+			this.inputs[i].onchange=this.change;
+		}
+	}
+}
 
 // Social object (social networks links and share buttons)
 var social={
