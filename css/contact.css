@@ -156,3 +156,11 @@ header {
 	cursor:default;
 	opacity:0.5;
 }
+
+@media screen and (max-width:1060px) {
+    #contact form fieldset[data-inline] .field {
+        width:100%;
+        border:none !important;
+        display:block;
+    }
+}

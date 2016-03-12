@@ -97,7 +97,7 @@ var Script=function(src,callback,wait) {
 }
 
 // Animation constructor (make animations)
-var Animation=function(draw,duration,fps,ease,wait) {
+var Animation=function(draw,duration,fps,ease,count,wait) {
     if(typeof draw!='function') return;
 
     var animation=this;
@@ -114,6 +114,7 @@ var Animation=function(draw,duration,fps,ease,wait) {
     this.frameRequest;
     this.d=draw;
     this.ease=typeof ease=='number' ? ease : 0;
+	this.count=typeof count=='number' ? count : 1;
 
 	// Fire on frame requests, calculate the evolution of the animation according to the ease value
     this.draw=function() {
@@ -125,6 +126,7 @@ var Animation=function(draw,duration,fps,ease,wait) {
             if(animation.timeOut>animation.duration) {
                 animation.d(1);
                 if(animation.requestFrame!==undefined) window.cancelAnimationFrame(animation.requestFrame);
+				if(animation.count>0) animation.fire();
                 return;
             }
             if(delta>=animation.interval) {
@@ -137,6 +139,7 @@ var Animation=function(draw,duration,fps,ease,wait) {
 
 	// Fire the animation
     this.fire=function() {
+		animation.count--;
         this.now=Date.now();
         this.timeOut=0;
         this.draw();

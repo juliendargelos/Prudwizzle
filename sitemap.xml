@@ -12,4 +12,10 @@
 		<changefreq>weekly</changefreq>
 		<priority>0.5</priority>
 	</url>
+	<url>
+		<loc>https://d157rqmxrxj6ey.cloudfront.net/bonneaudargelos/37817/contact.html</loc>
+		<lastmod>2016-03-02</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
 </urlset>
