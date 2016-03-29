@@ -312,10 +312,21 @@ header {
 /******************************************************************************/
 
 @media screen and (max-width:1060px) {
+    body {margin:400px 0 0 0;}
+
+    #timelapse {
+        height:400px;
+    }
+
     #main-title {
         height:6vw;
+        margin-top:170px;
         font-size:6vw;
         letter-spacing:4vw;
+    }
+
+    #timelapse .discover {
+        margin-top:70px;
     }
 
     header nav {background:transparent;}

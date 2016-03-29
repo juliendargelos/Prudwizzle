@@ -129,6 +129,7 @@ header {
 	margin:0 0 0 auto;
 	padding:15px;
 	border:none;
+    border-radius:0;
 	cursor:pointer;
 	display:block;
 	-webkit-appearance:none;
