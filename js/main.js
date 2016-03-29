@@ -862,7 +862,7 @@ var thimbleHack={
 	requestFrame:null,
 	// Initialize object: hack Thimble
 	init:function() {
-		if(!client.mobile) this.hack();
+		this.hack();
 	}
 };
 
